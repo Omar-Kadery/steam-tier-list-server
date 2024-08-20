@@ -15,8 +15,10 @@ app.UseCors(builder => builder
 
 HttpClient client = new HttpClient();
 
-app.MapGet("/games", async (string steamid) => {
-    var steamResponse = await client.GetStringAsync(String.Format("https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={0}&steamid={1}&format=json&include_appinfo=true", SteamTierListServer.ApiConstants.key, steamid));
+app.MapGet("/games", async (string steamid) =>
+{
+    var steamResponse = await client.GetStringAsync(String.Format("https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={0}&steamid={1}&format=json&include_appinfo=true",
+                                                                    ApiConstants.KEY, steamid));
     return steamResponse;
 
 });
